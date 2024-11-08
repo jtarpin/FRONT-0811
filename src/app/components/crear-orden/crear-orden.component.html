@@ -1,0 +1,64 @@
+<h1>Gestión de Órdenes de Trabajo</h1>
+
+
+<label for="modeSelect">Modo de creación:</label>
+<select id="modeSelect" [(ngModel)]="mode">
+  <option value="first">Primer Forma</option>
+  <option value="second">Segunda Forma</option>
+</select>
+
+<form (ngSubmit)="createOrUpdateOt()" *ngIf="selectedOt">
+  <input type="text" placeholder="Número de Orden" [(ngModel)]="selectedOt.order_number" name="order_number" required>
+
+
+  <div *ngIf="mode === 'first'">
+    <label for="constructedTag">TAG Generado:</label>
+    <input id="constructedTag" [value]="constructedTag" readonly>
+  </div>
+
+  <div *ngIf="mode === 'second'">
+    <label for="tagSelect">TAG</label>
+    <select id="tagSelect" (change)="onTagChange($event)">
+      <option *ngFor="let tag of allTags" [value]="tag.final_tag">{{ tag.final_tag }}</option>
+    </select>
+  </div>
+
+
+  <label for="assetType">Tipo de Activo</label>
+  <select id="assetType" (change)="onAssetTypeChange($event)">
+    <option *ngFor="let type of assetTypes" [value]="type.id_asset_type">{{ type.name }}</option>
+  </select>
+
+  <label for="edifice">Edificio</label>
+  <select id="edifice" (change)="onEdificeChange($event)">
+    <option *ngFor="let edifice of uniqueEdifices" [value]="edifice">{{ edifice }}</option>
+  </select>
+
+  <label for="floor">Piso</label>
+  <select id="floor" (change)="onFloorChange($event)">
+    <option *ngFor="let floor of uniqueFloors" [value]="floor">{{ floor }}</option>
+  </select>
+
+  <label for="sector">Sector</label>
+  <select id="sector" (change)="onSectorChange($event)">
+    <option *ngFor="let sector of uniqueSectors" [value]="sector">{{ sector }}</option>
+  </select>
+
+  <label for="site">Sitio</label>
+  <select id="site" (change)="onSiteChange($event)">
+    <option *ngFor="let site of uniqueSites" [value]="site">{{ site }}</option>
+  </select>
+
+  <label for="priority">Prioridad</label>
+  <select [(ngModel)]="selectedOt.id_priority" name="id_priority">
+    <option *ngFor="let priority of priorities" [value]="priority.id_priority">{{ priority.description }}</option>
+  </select>
+
+  <textarea placeholder="Observaciones" [(ngModel)]="selectedOt.observations" name="observations"></textarea>
+
+  <button type="submit">{{ isEditing ? 'Actualizar' : 'Crear' }}</button>
+</form>
+
+<button (click)="resetForm()">Crear Nueva Orden</button>
+
+
