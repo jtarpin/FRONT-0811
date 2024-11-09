@@ -1,113 +1,199 @@
-/*// CrearOrdenComponent
-import { Component, OnInit } from '@angular/core';
-import { OtService } from '../../services/ot.service';
-import { UserService } from '../../services/user.service';
-import { Ot } from '../../interfaces/ot';
-import { User } from '../../interfaces/user';
-import { AssetTypeService } from 'src/app/services/asset-type.service';
-import { AssetType } from 'src/app/interfaces/asset-type';
+// import { Component, OnInit } from '@angular/core';
+// import { OtService } from '../../services/ot.service';
+// import { TagService } from '../../services/tag.service';
+// import { UserService } from '../../services/user.service';
+// import { AssetTypeService } from 'src/app/services/asset-type.service';
+// import { EdificeService } from 'src/app/services/edifice.service';
+// import { FloorService } from 'src/app/services/floor.service';
+// import { SectorService } from 'src/app/services/sector.service';
+// import { SiteService } from 'src/app/services/site.service';
+// import { PriorityService } from 'src/app/services/priority.service';
+// import { TaskListService } from 'src/app/services/task-list.service';
+// import { TaskTypeService } from 'src/app/services/task-type.service';
+// import { Ot } from '../../interfaces/ot';
+// import { User } from '../../interfaces/user';
+// import { AssetType } from '../../interfaces/asset-type';
+// import { Tag } from '../../interfaces/tag';
+// import { Priority } from '../../interfaces/priority';
+// import { Edifice } from '../../interfaces/edifice';
+// import { Floor } from '../../interfaces/floor';
+// import { Sector } from '../../interfaces/sector';
+// import { Site } from '../../interfaces/site';
+// import { TaskList } from '../../interfaces/task-list';
+// import { TaskType } from '../../interfaces/task-type';
 
-@Component({
-  selector: 'app-gestion-ordenes',
-  templateUrl: './crear-orden.component.html',
-  styleUrls: ['./crear-orden.component.css']
-})
-export class CrearOrdenComponent implements OnInit {
-  ordenes: Ot[] = [];
-  users: User[] = []; // Lista para almacenar los usuarios
-  assetTypes: AssetType[] = []; // Lista para almacenar los tipos de activos
-  selectedOt: Ot | null = null;
-  isEditing: boolean = false;
+// @Component({
+//   selector: 'app-gestion-ordenes',
+//   templateUrl: './crear-orden.component.html',
+//   styleUrls: ['./crear-orden.component.css']
+// })
+// export class CrearOrdenComponent implements OnInit {
+//   ordenes: Ot[] = [];
+//   users: User[] = [];
+//   assetTypes: AssetType[] = [];
+//   priorities: Priority[] = [];
+//   edifices: Edifice[] = [];
+//   sectors: Sector[] = [];
+//   sites: Site[] = [];
+//   floors: Floor[] = [];
+//   taskList: TaskList[] = [];
+//   taskTypes: TaskType[] = [];
+//   allTags: Tag[] = [];
+//   selectedOt: Ot | null = {
+//     id_ot: 0,
+//     order_number: '',
+//     request_date: new Date(),
+//     initial_date: new Date(),
+//     completion_date: new Date(),
+//     observations: '',
+//     id_user: 0,
+//     id_task_list: 0,
+//     id_priority: 0,
+//     id_ot_state: 0,
+//     id_tag: 0,
+//     id_task_type: 0
+//   };
+//   selectedTag?: string;
+//   selectedAssetTypeName?: string;
+//   selectedEdificeName?: string;
+//   selectedFloorName?: string;
+//   selectedSector?: string;
+//   selectedSite?: string;
+//   selectedTaskList?: string;
+//   selectedPriority?: number;
+//   isEditing: boolean = false;
 
-  constructor(
-    private otService: OtService,
-    private userService: UserService,
-    private assetTypeService: AssetTypeService
-  ) {
-    this.selectedOt = {
-      id_ot: 0,
-      order_number: '',
-      request_date: new Date(),
-      initial_date: new Date(),
-      completion_date: new Date(),
-      observations: '',
-      id_user: 0,
-      id_task_list: 0,
-      id_priority: 0,
-      id_ot_state: 0,
-      id_tag: 0
-    };
-  }
+//   constructor(
+//     private otService: OtService,
+//     private tagService: TagService,
+//     private userService: UserService,
+//     private assetTypeService: AssetTypeService,
+//     private priorityService: PriorityService,
+//     private edificeService: EdificeService,
+//     private floorService: FloorService,
+//     private sectorService: SectorService,
+//     private siteService: SiteService,
+//     private taskListService: TaskListService,
+//     private taskTypeService: TaskTypeService
 
-  ngOnInit(): void {
-    this.getOrdenes();
-    this.loadUsers(); // Cargar los usuarios al iniciar el componente\
-    this.loadAssetTypes(); // Cargar los tipos de activos al iniciar el componente\
-  }
+//   ) {}
 
-  getOrdenes(): void {
-    this.otService.getAll().subscribe({
-      next: (data) => this.ordenes = data,
-      error: (err) => console.error('Error fetching orders:', err)
-    });
-  }
+//   ngOnInit(): void {
+//     this.getOrdenes();
+//     this.loadUsers();
+//     this.loadAssetTypes();
+//     this.loadPriorities();
+//     this.loadAllTags();
+//     this.loadEdifices();
+//     this.loadFloors();
+//     this.loadSectors();
+//     this.loadSites();
+//     this.loadTaskList();
+//     this.loadTaskType();
+//   }
 
-  loadUsers(): void {
-    this.userService.getAll().subscribe({
-      next: (data) => this.users = data,
-      error: (err) => console.error('Error fetching users:', err)
-    });
-  }
+//   getOrdenes(): void {
+//     this.otService.getAll().subscribe(data => this.ordenes = data);
+//   }
 
-  loadAssetTypes(): void {
-    this.assetTypeService.getAll().subscribe({
-      next: (data) => this.assetTypes = data,
-      error: (err) => console.error('Error fetching users:', err)
-    });
-  }
+//   loadUsers(): void {
+//     this.userService.getAll().subscribe(data => this.users = data);
+//   }
 
+//   loadAssetTypes(): void {
+//     this.assetTypeService.getAll().subscribe(data => this.assetTypes = data);
+//   }
 
+//   loadPriorities(): void {
+//     this.priorityService.getAll().subscribe(data => this.priorities = data);
+//   }
 
-  selectOt(ot: Ot): void {
-    this.selectedOt = { ...ot };
-    this.isEditing = true;
-  }
+//   loadAllTags(): void {
+//     this.tagService.getAll().subscribe(tags => {
+//       this.allTags = tags;
+//     });
+//   }
 
-  createOrUpdateOt(): void {
-    if (this.selectedOt) {
-      if (this.isEditing) {
-        this.otService.update(this.selectedOt.id_ot, this.selectedOt).subscribe({
-          next: () => {
-            this.getOrdenes();
-            this.resetForm();
-          },
-          error: (err) => console.error('Error updating order:', err)
-        });
-      } else {
-        this.otService.create(this.selectedOt).subscribe({
-          next: () => {
-            this.getOrdenes();
-            this.resetForm();
-          },
-          error: (err) => console.error('Error creating order:', err)
-        });
-      }
-    }
-  }
+//   loadEdifices(): void {
+//     this.edificeService.getAll().subscribe(data => this.edifices = data);
+//   }
 
-  deleteOt(id: number): void {
-    this.otService.delete(id).subscribe({
-      next: () => this.getOrdenes(),
-      error: (err) => console.error('Error deleting order:', err)
-    });
-  }
+//   loadFloors(): void {
+//     this.floorService.getAll().subscribe(data => this.floors = data);
+//   }
 
-  resetForm(): void {
-    this.selectedOt = null;
-    this.isEditing = false;
-  }
-}
-*/
+//   loadSectors(): void {
+//     this.sectorService.getAll().subscribe(data => this.sectors = data);
+//   }
+
+//   loadSites(): void {
+//     this.siteService.getAll().subscribe(data => this.sites = data);
+//   }
+
+//   loadTaskList(): void {
+//     this.taskListService.getAll().subscribe(data => this.taskList = data);
+//   }
+
+//   loadTaskType(): void {
+//     this.taskTypeService.getAll().subscribe(data => this.taskTypes = data);
+//   }
+
+//   // Cuando cambia el TAG, completamos los demás campos automáticamente
+//   onTagChange(event: Event): void {
+//     const target = event.target as HTMLSelectElement;
+//     const selectedTag = this.allTags.find(tag => tag.final_tag === target.value);
+//     if (selectedTag) {
+//       this.selectedOt!.id_tag = selectedTag.id_tag;
+
+//       /*// Obtener el nombre del Tipo de Activo
+//       const assetType = this.assetTypes.find(type => type.id_asset_type === +selectedTag.asset_type);
+//       this.selectedAssetTypeName = assetType ? assetType.name : '';
+
+//       // Obtener el nombre del Edificio
+//       const edifice = this.edifices.find(e => e.id_edifice === +selectedTag.edifice);
+//       this.selectedEdificeName = edifice ? edifice.name : '';
+
+//       // Obtener el nombre del Piso, si es planta baja o mostrar el nombre adecuado
+//       const floor = this.floors.find(f => f.id_floor === +selectedTag.floor);
+//       this.selectedFloorName = floor ? floor.name : '';*/
+
+//       this.selectedAssetTypeName = selectedTag.asset_type;
+//       this.selectedEdificeName = selectedTag.edifice;
+//       this.selectedFloorName = selectedTag.floor;
+//       this.selectedSector = selectedTag.sector;
+//       this.selectedSite = selectedTag.site;
+
+//     }
+//   }
+
+//   createOrUpdateOt(): void {
+//     // Lógica para crear o actualizar la orden de trabajo
+//   }
+
+//   resetForm(): void {
+//     this.selectedOt = {
+//       id_ot: 0,
+//       order_number: '',
+//       request_date: new Date(),
+//       initial_date: new Date(),
+//       completion_date: new Date(),
+//       observations: '',
+//       id_user: 0,
+//       id_task_list: 0,
+//       id_priority: 0,
+//       id_ot_state: 0,
+//       id_tag: 0,
+//       id_task_type: 0,
+//     };
+//     this.isEditing = false;
+//     this.selectedAssetTypeName = '';
+//     this.selectedEdificeName = '';
+//     this.selectedFloorName = '';
+//     this.selectedSector = '';
+//     this.selectedSite = '';
+//   }
+// }
+
 
 
 import { Component, OnInit } from '@angular/core';
@@ -120,11 +206,21 @@ import { FloorService } from 'src/app/services/floor.service';
 import { SectorService } from 'src/app/services/sector.service';
 import { SiteService } from 'src/app/services/site.service';
 import { PriorityService } from 'src/app/services/priority.service';
+import { TaskListService } from 'src/app/services/task-list.service';
+import { TaskTypeService } from 'src/app/services/task-type.service';
 import { Ot } from '../../interfaces/ot';
 import { User } from '../../interfaces/user';
 import { AssetType } from '../../interfaces/asset-type';
 import { Tag } from '../../interfaces/tag';
 import { Priority } from '../../interfaces/priority';
+import { Edifice } from '../../interfaces/edifice';
+import { Floor } from '../../interfaces/floor';
+import { Sector } from '../../interfaces/sector';
+import { Site } from '../../interfaces/site';
+import { TaskList } from '../../interfaces/task-list';
+import { TaskType } from '../../interfaces/task-type';
+import { TaskService } from '../../services/task.service';
+import { Task } from '../../interfaces/task';
 
 @Component({
   selector: 'app-gestion-ordenes',
@@ -136,8 +232,14 @@ export class CrearOrdenComponent implements OnInit {
   users: User[] = [];
   assetTypes: AssetType[] = [];
   priorities: Priority[] = [];
+  edifices: Edifice[] = [];
+  sectors: Sector[] = [];
+  sites: Site[] = [];
+  floors: Floor[] = [];
+  taskLists: TaskList[] = [];
+  taskTypes: TaskType[] = [];
   allTags: Tag[] = [];
-  filteredTags: Tag[] = [];
+  tasks: Task[] = [];
   selectedOt: Ot | null = {
     id_ot: 0,
     order_number: '',
@@ -149,20 +251,18 @@ export class CrearOrdenComponent implements OnInit {
     id_task_list: 0,
     id_priority: 0,
     id_ot_state: 0,
-    id_tag: 0
+    id_tag: 0,
+    id_task_type: 0
   };
-  isEditing: boolean = false;
-
-  // Variables de filtro y selección
-  selectedAssetType?: number;
-  selectedEdifice?: string;
-  selectedFloor?: string;
+  selectedTag?: string;
+  selectedAssetTypeName?: string;
+  selectedEdificeName?: string;
+  selectedFloorName?: string;
   selectedSector?: string;
   selectedSite?: string;
-  selectedAssetNumber?: string;
+  selectedTaskListSteps: string[] = []; // Lista de descripciones de tareas
   selectedPriority?: number;
-  selectedTag?: string;  // Para la segunda forma
-  mode: 'first' | 'second' = 'first'; // Modo de creación
+  isEditing: boolean = false;
 
   constructor(
     private otService: OtService,
@@ -173,7 +273,10 @@ export class CrearOrdenComponent implements OnInit {
     private edificeService: EdificeService,
     private floorService: FloorService,
     private sectorService: SectorService,
-    private siteService: SiteService
+    private siteService: SiteService,
+    private taskListService: TaskListService,
+    private taskTypeService: TaskTypeService,
+    private taskService: TaskService
   ) {}
 
   ngOnInit(): void {
@@ -182,6 +285,13 @@ export class CrearOrdenComponent implements OnInit {
     this.loadAssetTypes();
     this.loadPriorities();
     this.loadAllTags();
+    this.loadEdifices();
+    this.loadFloors();
+    this.loadSectors();
+    this.loadSites();
+    this.loadTaskLists();
+    this.loadTasks(); // Cargar todas las tareas
+    this.loadTaskTypes();
   }
 
   getOrdenes(): void {
@@ -203,73 +313,104 @@ export class CrearOrdenComponent implements OnInit {
   loadAllTags(): void {
     this.tagService.getAll().subscribe(tags => {
       this.allTags = tags;
-      this.filteredTags = tags;
     });
   }
 
-  updateFilteredTags(): void {
-    this.filteredTags = this.allTags.filter(tag =>
-      (!this.selectedAssetType || tag.asset_type === String(this.selectedAssetType)) &&
-      (!this.selectedEdifice || tag.edifice === this.selectedEdifice) &&
-      (!this.selectedFloor || tag.floor === this.selectedFloor) &&
-      (!this.selectedSector || tag.sector === this.selectedSector) &&
-      (!this.selectedSite || tag.site === this.selectedSite) &&
-      (!this.selectedAssetNumber || tag.asset_number === this.selectedAssetNumber)
-    );
+  loadEdifices(): void {
+    this.edificeService.getAll().subscribe(data => this.edifices = data);
   }
 
-  // Manejadores de cambios
-  onAssetTypeChange(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    this.selectedAssetType = +target.value;
-    this.updateFilteredTags();
+  loadFloors(): void {
+    this.floorService.getAll().subscribe(data => this.floors = data);
   }
 
-  onEdificeChange(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    this.selectedEdifice = target.value;
-    this.updateFilteredTags();
+  loadSectors(): void {
+    this.sectorService.getAll().subscribe(data => this.sectors = data);
   }
 
-  onFloorChange(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    this.selectedFloor = target.value;
-    this.updateFilteredTags();
+  loadSites(): void {
+    this.siteService.getAll().subscribe(data => this.sites = data);
   }
 
-  onSectorChange(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    this.selectedSector = target.value;
-    this.updateFilteredTags();
+  loadTaskLists(): void {
+    this.taskListService.getAll().subscribe(data => {
+      this.taskLists = data;
+      console.log("Task Lists Loaded:", this.taskLists); // Debug para asegurar que se cargan las listas
+    });
   }
 
-  onSiteChange(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    this.selectedSite = target.value;
-    this.updateFilteredTags();
+  loadTasks(): void {
+    this.taskService.getAll().subscribe(data => {
+      this.tasks = data;
+      console.log("Tasks Loaded:", this.tasks); // Debug para asegurar que se cargan las tareas
+    });
   }
 
-  onAssetNumberChange(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    this.selectedAssetNumber = target.value;
-    this.updateFilteredTags();
+  loadTaskTypes(): void {
+    this.taskTypeService.getAll().subscribe(data => this.taskTypes = data);
+  }
+
+  getTaskDescription(taskId: number | null): string {
+    const task = this.tasks.find(t => t.id_task === taskId);
+    return task ? task.description : '';
   }
 
   onTagChange(event: Event): void {
     const target = event.target as HTMLSelectElement;
     const selectedTag = this.allTags.find(tag => tag.final_tag === target.value);
     if (selectedTag) {
-      this.selectedAssetType = parseInt(selectedTag.asset_type);
-      this.selectedEdifice = selectedTag.edifice;
-      this.selectedFloor = selectedTag.floor;
+      this.selectedOt!.id_tag = selectedTag.id_tag;
+      this.selectedAssetTypeName = selectedTag.asset_type;
+      this.selectedEdificeName = selectedTag.edifice;
+      this.selectedFloorName = selectedTag.floor;
       this.selectedSector = selectedTag.sector;
       this.selectedSite = selectedTag.site;
-      this.selectedAssetNumber = selectedTag.asset_number;
     }
+
   }
 
-  get constructedTag(): string {
-    return `${this.selectedAssetType || ''}-${this.selectedEdifice || ''}-${this.selectedFloor || ''}-${this.selectedSector || ''}-${this.selectedSite || ''}-${this.selectedAssetNumber || ''}`;
+  onTaskTypeChange(event: Event): void {
+    this.updateTaskList();
+  }
+
+  updateTaskList(): void {
+    if (this.selectedOt && this.selectedOt.id_tag && this.selectedOt.id_task_type) {
+      const selectedTag = this.allTags.find(tag => tag.id_tag === this.selectedOt!.id_tag);
+      if (selectedTag) {
+        const assetTypeId = +selectedTag.asset_type;
+        const taskTypeId = this.selectedOt.id_task_type;
+        const matchingTaskList = this.taskLists.find(
+          list => list.id_asset_type === assetTypeId && list.id_task_type === taskTypeId
+        );
+
+        console.log("Selected Asset Type ID:", assetTypeId);  // Verificar el tipo de activo seleccionado
+        console.log("Selected Task Type ID:", taskTypeId);    // Verificar el tipo de tarea seleccionado
+        console.log("Matching Task List:", matchingTaskList); // Verificar si se encuentra una lista de tareas
+
+        if (matchingTaskList) {
+          this.selectedOt!.id_task_list = matchingTaskList.id_task_list;
+
+          // Verificamos que cada paso se carga correctamente
+          this.selectedTaskListSteps = [
+            this.getTaskDescription(matchingTaskList.step_1),
+            this.getTaskDescription(matchingTaskList.step_2),
+            this.getTaskDescription(matchingTaskList.step_3),
+            this.getTaskDescription(matchingTaskList.step_4),
+            this.getTaskDescription(matchingTaskList.step_5),
+            this.getTaskDescription(matchingTaskList.step_6),
+            this.getTaskDescription(matchingTaskList.step_7),
+            this.getTaskDescription(matchingTaskList.step_8),
+            this.getTaskDescription(matchingTaskList.step_9),
+            this.getTaskDescription(matchingTaskList.step_10),
+          ].filter((step): step is string => step !== '');
+
+          console.log("Selected Task List Steps:", this.selectedTaskListSteps); // Verificar los pasos de la lista
+        } else {
+          this.selectedTaskListSteps = [];
+          console.log("No matching task list found for selected asset and task type."); // Debug para verificar si no se encuentra la lista
+        }
+      }
+    }
   }
 
   createOrUpdateOt(): void {
@@ -277,25 +418,26 @@ export class CrearOrdenComponent implements OnInit {
   }
 
   resetForm(): void {
-    this.selectedOt = null;
+    this.selectedOt = {
+      id_ot: 0,
+      order_number: '',
+      request_date: new Date(),
+      initial_date: new Date(),
+      completion_date: new Date(),
+      observations: '',
+      id_user: 0,
+      id_task_list: 0,
+      id_priority: 0,
+      id_ot_state: 0,
+      id_tag: 0,
+      id_task_type: 0,
+    };
     this.isEditing = false;
-  }
-
-  // Métodos para obtener listas únicas
-  get uniqueEdifices(): string[] {
-    return [...new Set(this.filteredTags.map(tag => tag.edifice))];
-  }
-
-  get uniqueFloors(): string[] {
-    return [...new Set(this.filteredTags.map(tag => tag.floor))];
-  }
-
-  get uniqueSectors(): string[] {
-    return [...new Set(this.filteredTags.map(tag => tag.sector))];
-  }
-
-  get uniqueSites(): string[] {
-    return [...new Set(this.filteredTags.map(tag => tag.site))];
+    this.selectedAssetTypeName = '';
+    this.selectedEdificeName = '';
+    this.selectedFloorName = '';
+    this.selectedSector = '';
+    this.selectedSite = '';
+    this.selectedTaskListSteps = [];
   }
 }
-

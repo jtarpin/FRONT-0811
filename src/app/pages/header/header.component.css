@@ -10,10 +10,12 @@
     align-items: center; /* Centra verticalmente los elementos */
 }
 
-.logo {
-    font-size: 24px; /* Tamaño del texto del logo */
-    font-weight: bold; /* Negrita para el logo */
-}
+/* .logo-image {
+  width: 100px;
+  height: auto;
+} */
+
+
 
 .navigation ul {
     list-style-type: none; /* Elimina los puntos de la lista */

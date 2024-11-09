@@ -25,7 +25,8 @@ export class OtComponent implements OnInit {
       id_task_list: 0,
       id_priority: 0,
       id_ot_state: 0,
-      id_tag: 0
+      id_tag: 0,
+      id_task_type: 0
     };
   }
 
